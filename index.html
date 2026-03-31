@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domains | مرحباً</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --domain-blue: #0616C4;
+            --deep-ocean: #00175A;
+            --knowledge-purple: #4B2B6C;
+            --soft-violet: #8042EB;
+            --text-light: #ffffff;
+            --text-muted: #e5e7eb;
+        }
+
+        /* Animated Breathing Background */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Wider gradient for the animation to move across */
+            background: linear-gradient(-45deg, var(--deep-ocean), var(--knowledge-purple), var(--domain-blue), var(--deep-ocean));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        nav {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            transition: opacity 0.3s;
+        }
+        nav a:hover { opacity: 1; }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 90%;
+            width: 350px;
+            margin-top: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Entrance Animation Logic */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-item {
+            opacity: 0; /* Hidden initially */
+            animation: slideUpFade 0.8s ease-out forwards;
+        }
+
+        /* Staggering the animations */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .brand-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite; /* Floating effect */
+        }
+
+        p.welcome-text {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--soft-violet);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(128, 66, 235, 0.3);
+        }
+
+        button {
+            background-color: var(--domain-blue);
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(6, 22, 196, 0.4);
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--soft-violet);
+            box-shadow: 0 6px 20px rgba(128, 66, 235, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">البداية</a>
+        <a href="volunteering.html">التطوع</a>
+    </nav>
+
+    <div class="container">
+        <div class="animate-item delay-1">
+            <img src="logo.png" alt="Domains Logo" class="brand-logo">
+        </div>
+        
+        <div class="animate-item delay-2">
+            <p class="welcome-text">اهلاً و سهلاً فيكن مبسوطين انكم معنا اليوم، بس قبل ما نبلّش جولتنا الغريبة، بدنا نتعرفّ على حضرتكن</p>
+        </div>
+        
+        <div class="animate-item delay-3">
+            <input type="text" id="userNameInput" placeholder="اكتب اسمك هنا" required>
+        </div>
+
+        <div class="animate-item delay-4">
+            <button onclick="startJourney()">ابدأ الجولة</button>
+        </div>
+    </div>
+
+    <script>
+        function startJourney() {
+            const nameInput = document.getElementById('userNameInput').value.trim();
+            
+            if (nameInput === "") {
+                alert("الرجاء إدخال اسمك للبدء.");
+                return; 
+            }
+
+            localStorage.setItem('domainsVisitorName', nameInput);
+            
+            // Sends them to the new Scavenger Hunt page!
+            window.location.href = "volunteering.html"; 
+        }
+
+        document.getElementById("userNameInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                startJourney();
+            }
+        });
+    </script>
+</body>
+</html>
