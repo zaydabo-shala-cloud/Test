@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domains | جولة الانطلاق</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --domain-blue: #0616C4;
+            --deep-ocean: #00175A;
+            --knowledge-purple: #4B2B6C;
+            --soft-violet: #8042EB;
+            --digital-cyan: #0DB7D2; 
+            
+            --icy-blue: #EEF2FB; 
+            --pale-cyan: #E0F7FA; 
+            --text-light: #F8F9FA; 
+            --text-muted: #D1D5DB;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'IBM Plex Sans Arabic', 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px 0;
+            background: linear-gradient(-45deg, var(--deep-ocean), var(--knowledge-purple), var(--domain-blue), var(--deep-ocean));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .step-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 90%;
+            width: 400px;
+            backdrop-filter: blur(10px);
+            display: none; 
+            animation: slideUpFade 0.5s ease-out forwards;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        .active-step {
+            display: block; 
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-logo {
+            max-width: 130px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); 
+        }
+
+        h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: var(--digital-cyan); }
+        p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; }
+        
+        .joke-text { font-size: 0.95rem; color: var(--text-muted); font-style: italic; }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: var(--icy-blue);
+            border: 2px solid transparent;
+            color: var(--deep-ocean);
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-family: 'IBM Plex Sans Arabic', 'Poppins', sans-serif;
+            font-weight: 600;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: #7A8B99;
+            font-weight: 400;
+        }
+
+        select option { color: var(--deep-ocean); }
+
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: var(--digital-cyan);
+            background: #ffffff; 
+            box-shadow: 0 0 10px rgba(13, 183, 210, 0.4);
+        }
+
+        .btn {
+            background-color: var(--domain-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Sans Arabic', 'Poppins', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(6, 22, 196, 0.4);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover { background-color: var(--digital-cyan); color: var(--deep-ocean); }
+        .btn:active { transform: scale(0.97); }
+        
+        .btn-group { display: flex; gap: 10px; }
+        .btn-group .btn { flex: 1; font-size: 0.95rem; padding: 12px 5px; }
+
+        .btn-back {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-muted);
+            box-shadow: none;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .btn-back:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .slider-container { margin: 20px 0 30px 0; }
+        
+        .slider-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--digital-cyan);
+        }
+        .slider-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--digital-cyan);
+            margin-top: 15px;
+            min-height: 40px;
+        }
+
+        .checkbox-group { text-align: right; margin-bottom: 20px; }
+        .checkbox-label {
+            display: block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .checkbox-label:hover { background: rgba(255, 255, 255, 0.2); }
+        .checkbox-label input { margin-left: 10px; accent-color: var(--digital-cyan); transform: scale(1.2); }
+    </style>
+</head>
+<body>
+
+    <div class="step-container active-step" id="step-1">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        
+        <h1 style="color: var(--pale-cyan); font-size: 1.4rem; line-height: 1.5;">اهلا و سهلا فيك بأول جولة إلك مع Domains</h1>
+        
+        <input type="text" id="userName" placeholder="الاسم الكريم لو سمحت/ي" required>
+        
+        <select id="userGender">
+            <option value="" disabled selected>الجنس</option>
+            <option value="male">ذكر</option>
+            <option value="female">أنثى</option>
+        </select>
+
+        <p style="margin-bottom: 15px;">نبلّش جولتنا ؟؟</p>
+        <div class="btn-group">
+            <button class="btn" onclick="goToStep(2)">نبلّش طبعاً</button>
+            <button class="btn" onclick="goToStep(2)">بلّش</button>
+            <button class="btn" onclick="goToStep(2)">أكيد بلّش</button>
+        </div>
+    </div>
+
+    <div class="step-container" id="step-2">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <h1 id="greetingText">أهلاً وسهلاً</h1>
+        <p>هلأ رح تسأل حالك مين Domains؟ صبور شوي بالأخير منجاوبك.</p>
+        
+        <button class="btn" onclick="goToStep(3)">التالي</button>
+        <button class="btn btn-back" onclick="goToStep(1)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-3">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <p>بس هلأ قلّي، شلون بتقيّم تجربتك بحياتك الجامعيّة لحد الآن على مقياس من 1 لـ 10؟</p>
+        <p class="joke-text">(لا تاكل هم، رح يضل سر بينّا و بينك 🤫)</p>
+
+        <div class="slider-container">
+            <div class="slider-number" id="sliderValueDisplay">5</div>
+            <input type="range" id="collegeRating" min="1" max="10" value="5" oninput="updateSliderText()">
+            <div class="slider-text" id="sliderText">ماشي الحال، أيام هيك وأيام هيك 🤷‍♂️</div>
+        </div>
+        
+        <button class="btn" onclick="goToStep(4)">التالي</button>
+        <button class="btn btn-back" onclick="goToStep(2)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-4">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <p style="color: var(--digital-cyan); font-weight: bold; font-size: 1.2rem;">امشي 10 خطوات لقدام...</p>
+        <p>رح تلاقي علبة تحلاية، خود وحدة بس، وحدة ها !! لا تاخد اكتر، شايفينك 👀</p>
+        
+        <button class="btn" onclick="goToStep(5)">أخدت تحلاية 🍬</button>
+        <button class="btn btn-back" onclick="goToStep(3)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-5">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <h1>سؤال عالسريع</h1>
+        <p>من بين الخيارات الخمسة اللي تحت، اش بتحس أكتر شي بينقصك بالجامعة؟</p>
+        
+        <div class="checkbox-group" id="needsCheckboxes">
+            <label class="checkbox-label"><input type="checkbox" value="مكان"> مكان هادئ للدراسة</label>
+            <label class="checkbox-label"><input type="checkbox" value="مهارات"> مهارات عملية لسوق العمل</label>
+            <label class="checkbox-label"><input type="checkbox" value="مجتمع"> مجتمع بيشبهني</label>
+            <label class="checkbox-label"><input type="checkbox" value="فعاليات"> فعاليات وورشات مفيدة</label>
+            <label class="checkbox-label"><input type="checkbox" value="توجيه"> توجيه مهني ونفسي</label>
+        </div>
+        
+        <button class="btn" onclick="checkNeeds()">تأكيد خياراتي</button>
+        <button class="btn btn-back" onclick="goToStep(4)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-6">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <p id="needsResponse" style="font-weight: 600; font-size: 1.3rem; line-height: 1.8; color: var(--digital-cyan); margin: 20px 0;"></p>
+        
+        <button class="btn" onclick="goToStep(7)">التالي</button>
+        <button class="btn btn-back" onclick="goToStep(5)">رجوع لتغيير خياراتي</button>
+    </div>
+
+    <div class="step-container" id="step-7">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <p style="color: var(--digital-cyan); font-weight: bold; font-size: 1.2rem;">امشي كمان 10 خطوات لقدّام...</p>
+        <p>رح تلاقي لوح كبير مكتوب عليه "انت أي نوع من الأنواع التالية". حط إشارة واحدة بس على الإجابة اللي بتناسبك على اللوح.</p>
+        
+        <button class="btn" onclick="goToStep(8)">بس اخترت، اضغط على هاد الزر</button>
+        <button class="btn btn-back" onclick="goToStep(6)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-8">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <h1>مرحّب فيك عنّا!</h1>
+        <p>مبدئيّاً اش ما اخترت، انت مرحّب فيك عنّا، اذا كنت مهتم طبعاً لأنو ما عنّا شي بالغصب.</p>
+        <p>واش ما اخترت نحن متأكدين انو معنا رح تقدّر تطوّر حالك أكتر وأكتر، إن كان من الناحية الدراسية، وإن كان من كل النواحي التانية اللي هي بتهمنا أكتر!</p>
+        <button class="btn" onclick="goToStep(9)">تم</button>
+        <button class="btn btn-back" onclick="goToStep(7)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-9">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <h1>المحطة الأخيرة</h1>
+        <p class="joke-text">لسّا شاكك انك اخدت أكتر من قطعة وحدة من التحلاية، عالحالتين مسامح وصحة وهنا عقلبك 😂</p>
+        
+        <p>بدنا منك تكتب على ورقة صغيرة بجمل قصيرة <strong>أكبر فشل خضته بحياتك</strong>، وبرأيك بتقدر تتخطاه ولا لأ؟</p>
+        <p class="joke-text">(لا تكتب اسمك، نحن بس حابين نسمع قصصكن اكتر لنقدر نكون قريبين منكم)</p>
+        
+        <button class="btn" onclick="goToStep(10)">التالي</button>
+        <button class="btn btn-back" onclick="goToStep(8)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-10">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <p style="color: var(--digital-cyan); font-weight: bold; font-size: 1.2rem;">توجه للمكتب اللي قدامك بـ 10 خطوات تقريباً...</p>
+        <p>بتلاقي شباب وبنات حبابين قاعدين عبيستنوك مشان يسلموك هديّة صغيرة منّا الك، وهي عبارة عن عربون صداقة انشالله رح تستمر فترة طويلة 🎁</p>
+
+        <button class="btn" onclick="showFinalVideo()">استلام الهدية</button>
+        <button class="btn btn-back" onclick="goToStep(9)">رجوع</button>
+    </div>
+
+    <div class="step-container" id="step-11">
+        <img src="logo.png" alt="Domains Logo" class="brand-logo" onerror="this.style.display='none'">
+        <h1>رسالة من فريقنا</h1>
+        
+        <div style="font-size: 3rem; margin-bottom: 10px;">🎥</div>
+        <p id="finalMessage" style="font-weight: 600; color: var(--pale-cyan); margin-bottom: 30px;"></p>
+        
+        <button class="btn btn-back" onclick="goToStep(10)">رجوع</button>
+    </div>
+
+    <script>
+        let userName = "";
+        let userGender = "";
+
+        const sliderPhrases = [
+            "يا لطيف! للدرجة هي؟ 💔",
+            "وضعك صعب بس بتنحل إن شاء الله 😅",
+            "معاناة، بس عم تحاول تقاوم 🧗‍♂️",
+            "مو أحسن شي، بس ماشية 🚶‍♂️",
+            "ماشي الحال، أيام هيك وأيام هيك 🤷‍♂️",
+            "نص نص، الأمور تحت السيطرة ⚖️",
+            "جيدة الحمدلله، باينتك متأقلم 👍",
+            "رواق! وضعك ممتاز يا وحش 🔥",
+            "مبسوط وعايش اللحظة الجامعية 🤩",
+            "ختمت الحياة الجامعية بامتياز! 👑"
+        ];
+
+        function goToStep(stepNum) {
+            if(stepNum === 2) {
+                userName = document.getElementById('userName').value.trim();
+                userGender = document.getElementById('userGender').value;
+
+                if(userName === "" || userGender === "") {
+                    alert("الرجاء إدخال الاسم وتحديد الجنس لنبدأ الجولة!");
+                    return;
+                }
+
+                let title = userGender === 'male' ? 'يا سيد' : 'يا سيدة';
+                document.getElementById('greetingText').innerText = `ايوااا ${title} ${userName} !`;
+            }
+
+            document.querySelectorAll('.step-container').forEach(el => {
+                el.classList.remove('active-step');
+            });
+
+            document.getElementById('step-' + stepNum).classList.add('active-step');
+            window.scrollTo(0, 0); 
+        }
+
+        function updateSliderText() {
+            let val = document.getElementById('collegeRating').value;
+            // Update the big number
+            document.getElementById('sliderValueDisplay').innerText = val;
+            // Update the text phrase
+            document.getElementById('sliderText').innerText = sliderPhrases[val - 1];
+        }
+
+        function checkNeeds() {
+            let checkedBoxes = document.querySelectorAll('#needsCheckboxes input:checked');
+            let count = checkedBoxes.length;
+            let responseText = "";
+
+            if (count === 0) {
+                responseText = "مشاءالله عليك ما ناقصك شي 🧿 الحسد وارد انتبه!";
+            } else if (count === 1 || count === 2) {
+                responseText = "النواقص هي جزء من الرحلة، وصدقني كلنا مرقنا فيها وراح نساعدك تكملها.";
+            } else if (count === 3 || count === 4) {
+                responseText = "وضعك بيشبه كتير طلاب، الفجوة كبيرة بس الحل موجود وقريب جداً.";
+            } else if (count === 5) {
+                responseText = "شكلها الحياة الجامعية صعبة معك بكل النواحي 😅، بس ولا يهمك، انت بالمكان الصح!";
+            }
+
+            document.getElementById('needsResponse').innerText = responseText;
+            
+            // Move directly to Step 6 (The Response)
+            goToStep(6);
+        }
+
+        function showFinalVideo() {
+            let finalMsg = document.getElementById('finalMessage');
+            if(userGender === 'male') {
+                finalMsg.innerText = "من فريق Domains، منحب نقلّك انو نحن متحمسين كتير لنلتقى فيك وتكون جزء من مجتمعنا يا بطل!";
+            } else {
+                finalMsg.innerText = "من فريق Domains، منحب نقلّك انو نحن متحمسين كتير لنلتقى فيكي وتكوني جزء من مجتمعنا يا بطلة!";
+            }
+            goToStep(11); 
+        }
+    </script>
+</body>
+</html>
